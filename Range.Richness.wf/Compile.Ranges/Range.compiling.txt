@@ -1,0 +1,12 @@
+#Downloaded Barone's data for all 3 transects
+#Created a .csv file (Barone.ranges) that includes each species found in the Sonadora transect
+#Filled in family, genus, and species name for each record based on 6 letter species code given.
+#Determined the upper and lower range limits for each species using Barone's data from all 3 transects
+#Adjusted the upper and lower range limits if the species is found within the LTER plot
+	#Made lower range 350m and upper range 400m if found within the plot and range did not already exceed these values
+#Adjusted the ranges based on F. Axelrod's book (A systematic vademecum to the vascular plants of Puerto Rico)
+#Adjusted the taxonomy of species to match updated taxonomy in Axelrod's book
+#Added a new column to Barone.ranges and calculated species range in this column in Excel
+=upper.range - lower.range
+
+
