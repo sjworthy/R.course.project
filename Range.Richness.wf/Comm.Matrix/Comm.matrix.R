@@ -32,5 +32,30 @@ sp.name=subset(elevation, !duplicated(elevation$stemSpeciesCode))
 cdm[i,]=table(sp.name$Quantile)
 }
 
+#to get narrow ranging species into a community data matrix
+#to be a narrow ranging species, range must be < mean
+narrow=matrix(data=NA, nrow=16, ncol=1)
+colnames(narrow)="Richness"
+rownames(narrow)=c(250, 300, 350, 400, 450, 500, 550, 600, 650, 700,750, 800, 850, 900, 950, 1000)
+
+listy=c(250, 300, 350, 400, 450, 500, 550, 600, 650, 700,750, 800, 850, 900, 950, 1000)
+
+for(i in 1:length(listy)){
+elevation=subset(Sonadora, Sonadora$plotElevation==listy[i])
+sp.name=subset(elevation, !duplicated(elevation$stemSpeciesCode))
+narrow[i,]=sum(sp.name$Range <=300)
+}
+
+#to get wide ranging species into a community data matrix
+#to be a wide ranging species, range must be > mean
+wide=matrix(data=NA, nrow=16, ncol=1)
+colnames(wide)="Richness"
+rownames(wide)=c(250, 300, 350, 400, 450, 500, 550, 600, 650, 700,750, 800, 850, 900, 950, 1000)
+
+for(i in 1:length(listy)){
+elevation=subset(Son, Son$plotElevation==listy[i])
+sp.name=subset(elevation, !duplicated(elevation$stemSpeciesCode))
+wide[i,]=sum(sp.name$Range >300)
+}
 
 
