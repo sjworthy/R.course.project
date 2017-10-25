@@ -1,28 +1,24 @@
 #Construct trait data matrix
-#number of rows is equal to number of quantiles
+#number of rows is equal to number of species
 #number of columns is equal to number of traits
-tdm=matrix(data=NA, nrow=5, ncol=5)
+tdm=matrix(data=NA, nrow=111, ncol=6)
 
 #Add column names
-colnames(tdm)=c("trait2, "trait2"...)
+colnames(tdm)=c("height.ft", "la", "sla", "wood", "n", "p" )
 
 #Add row names
-rownames(tdm)=c("Q1", "Q2"...)
+rownames(tdm)=barone.ranges$SpeciesCode
 
-#Cells will contain trait values for species within each quantile
+#Cells will contain trait values for species
 
-#Make a list of the species codes within the quantile
+tdm[,1]=barone.ranges$height_ft
+tdm[,2]=barone.ranges$la
+tdm[,3]=barone.ranges$sla
+tdm[,4]=barone.ranges$wood
+tdm[,5]=barone.ranges$n
+tdm[,6]=barone.ranges$p
 
-listy=c("sp1", "sp2,...)
 
-#subset the trait.csv for the rows of only the species in listy
-Q1=traits[listy,]
-
-#Determine the mean of the trait values for only those species 
-output=colMeans(Q1)
-
-#Put the output of the trait means into the rows of the trait data matrix
-tdm[1,]=output
 
 
 
