@@ -24,29 +24,27 @@ barone.ranges$Quantile=NA
 place the quantile name in column Quantile
 
 barone.ranges$Quantile[barone.ranges$range<=500]="Q1"
-barone.ranges$Quantile[barone.ranges$range>500 & barone.ranges$range<=734]="Q2"
-barone.ranges$Quantile[barone.ranges$range>734 & barone.ranges$range<=848]="Q3"
-barone.ranges$Quantile[barone.ranges$range>848 & barone.ranges$range<=950]="Q4"
+barone.ranges$Quantile[barone.ranges$range>500 & barone.ranges$range<=750]="Q2"
+barone.ranges$Quantile[barone.ranges$range>750 & barone.ranges$range<=850]="Q3"
+barone.ranges$Quantile[barone.ranges$range>850 & barone.ranges$range<=950]="Q4"
 barone.ranges$Quantile[barone.ranges$range>950]="Q5"
 
 #Assign species to quantile for .csv file that includes abundance
 #Create a new blank column called Quantile
 
 Sonadora$Quantile=NA
-
-#change the SpeciesCode column to all uppercase so that the two .csv files match
-
-barone.ranges$SpeciesCode=toupper(barone.ranges$SpeciesCode)
-
 #Get a list of the species that are in Q1-Q5
-Q1=list(barone.ranges$SpeciesCode[barone.ranges$range<=500])
+Q1=as.character(barone.ranges$SpeciesCode[barone.ranges$range<=500])
+Q2=as.character(barone.ranges$SpeciesCode[barone.ranges$range>500 & barone.ranges$range<=750])
+Q3=as.character(barone.ranges$SpeciesCode[barone.ranges$range>750 & barone.ranges$range<=850])
+Q4=as.character(barone.ranges$SpeciesCode[barone.ranges$range>850 & barone.ranges$range<=950])
+Q5=as.character(barone.ranges$SpeciesCode[barone.ranges$range>950])
 
 #Add Q1-Q5 for each of these species to the Quantile column
-#Had to do this 119 times for each species separately because I couldn't figure out
-how to match/subset/anything with a list of the names
 
-Sonadora$Quantile[Sonadora$stemSpeciesCode=="ALCFLO"]="Q1"
-
-
-
+Sonadora$Quantile[Sonadora$stemSpeciesCode %in% Q1]="Q1"
+Sonadora$Quantile[Sonadora$stemSpeciesCode %in% Q2]="Q2"
+Sonadora$Quantile[Sonadora$stemSpeciesCode %in% Q3]="Q3"
+Sonadora$Quantile[Sonadora$stemSpeciesCode %in% Q4]="Q4"
+Sonadora$Quantile[Sonadora$stemSpeciesCode %in% Q5]="Q5"
 
