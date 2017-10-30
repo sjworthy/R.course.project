@@ -33,6 +33,23 @@ cdm[i,]=output
 
 pa.cdm=decostand(cdm, method="pa")
 
+#To make a cdm for each quantile
+#Get a list of the species codes in each quantile
+
+Q1=as.character(barone.ranges$SpeciesCode[barone.ranges$range<=500])
+Q2=as.character(barone.ranges$SpeciesCode[barone.ranges$range>500 & barone.ranges$range<=750])
+Q3=as.character(barone.ranges$SpeciesCode[barone.ranges$range>750 & barone.ranges$range<=850])
+Q4=as.character(barone.ranges$SpeciesCode[barone.ranges$range>850 & barone.ranges$range<=950])
+Q5=as.character(barone.ranges$SpeciesCode[barone.ranges$range>950])
+
+#subset the data.frame by the list
+q1.cdm=cdm[,Q1]
+q2.cdm=cdm[,Q2]
+q3.cdm=cdm[,Q3]
+q4.cdm=cdm[,Q4]
+q5.cdm=cdm[,Q5]
+
+
 #to get narrow ranging species into a community data matrix
 #to be a narrow ranging species, range must be < mean
 narrow=matrix(data=NA, nrow=16, ncol=1)
