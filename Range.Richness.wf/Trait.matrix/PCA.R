@@ -13,11 +13,12 @@ make up the majority of the variance and use this to
 generate a distance matrix
 #get pc$scores for columns 1-3 into new matrix
 #give row names from the original trait matrix
-pc.scores=pc$scores[,1:3]
-rownames(pc.scores)=rownames(traits)
+
+pca.scores=pc$scores[,1:3]
+rownames(pca.scores)=rownames(traits)
 
 #calculate the multivariate Euclidean distance betwee all species
-pc.dist.mat=dist(pc.scores, method="euclidean")
+pca.dist.mat=dist(pca.scores, method="euclidean")
 
 
 
