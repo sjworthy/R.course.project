@@ -43,11 +43,11 @@ Q4=as.character(barone.ranges$SpeciesCode[barone.ranges$range>850 & barone.range
 Q5=as.character(barone.ranges$SpeciesCode[barone.ranges$range>950])
 
 #subset the data.frame by the list
-q1.cdm=cdm[,Q1]
-q2.cdm=cdm[,Q2]
-q3.cdm=cdm[,Q3]
-q4.cdm=cdm[,Q4]
-q5.cdm=cdm[,Q5]
+q1.abund.cdm=abund.cdm[,Q1]
+q2.abund.cdm=abund.cdm[,Q2]
+q3.abund.cdm=abund.cdm[,Q3]
+q4.abund.cdm=abund.cdm[,Q4]
+q5.abund.cdm=abund.cdm[,Q5]
 
 
 #to get narrow ranging species into a community data matrix
