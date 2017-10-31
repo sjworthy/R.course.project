@@ -18,10 +18,19 @@ tdm[,4]=barone.ranges$wood
 tdm[,5]=barone.ranges$n
 tdm[,6]=barone.ranges$p
 
+#Make trait data matrix for each quantile
 
+Q1=as.character(barone.ranges$SpeciesCode[barone.ranges$range<=500])
+Q2=as.character(barone.ranges$SpeciesCode[barone.ranges$range>500 & barone.ranges$range<=750])
+Q3=as.character(barone.ranges$SpeciesCode[barone.ranges$range>750 & barone.ranges$range<=850])
+Q4=as.character(barone.ranges$SpeciesCode[barone.ranges$range>850 & barone.ranges$range<=950])
+Q5=as.character(barone.ranges$SpeciesCode[barone.ranges$range>950])
 
-
-
+Q1.traits=all.traits[Q1,]
+Q2.traits=all.traits[Q2,]
+Q3.traits=all.traits[Q3,]
+Q4.traits=all.traits[Q4,]
+Q5.traits=all.traits[Q5,]
 
 #Determine mean trait values for each plot
 #function that calculates mean for the first column in the trait matrix
