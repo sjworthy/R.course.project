@@ -122,3 +122,57 @@ q5.p.ses.output[,1]=obs.mntd.p[[1]]
 q5.p.ses.output[,2]=obs.mntd.p[[3]]*1000
 
 write.csv(q5.p.ses.output, file="q5.p.ses.a.output.csv")
+
+
+#ses mpd with pc.scores
+
+obs.pc.mpd.funk=function(cdm, null){
+trait=as.matrix(pc.2)
+rownames(trait)=rownames(pc.2)
+dist.trait=dist(trait, method="euclidean")
+sq.dist=as.matrix(dist.trait)
+obs.mpd=mpd(cdm, sq.dist, abundance.weighted=F)
+ses.all=(obs.mpd-apply(null, MARGIN=1, mean))/apply(null, MARGIN=1, sd)
+p.vall.all=apply(cbind(obs.mpd, null), MARGIN=1, rank)[1,]/1000
+return(list(obs.mpd, ses.all, p.vall.all))
+}
+
+obs.mpd.pa=obs.pc.mpd.funk(q5.cdm, q5.pc.mpd.null)
+
+q5.pc.ses.output=matrix(data=NA, ncol=4, nrow=16)
+colnames(q5.pc.ses.output)=c("mpd.obs", "mpd.obs.rank", "mpd.obs.z", "mpd.obs.p")
+rownames(q5.pc.ses.output)=c(250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000)
+
+q5.pc.ses.output[,3]=obs.mpd.pa[[2]]
+q5.pc.ses.output[,4]=obs.mpd.pa[[3]]
+q5.pc.ses.output[,1]=obs.mpd.pa[[1]]
+q5.pc.ses.output[,2]=obs.mpd.pa[[3]]*1000
+
+write.csv(q5.pc.ses.output, file="q5.ses.pc.output.csv")
+
+#ses mntd with pc.scores
+
+obs.pc.mntd.funk=function(cdm, null){
+trait=as.matrix(pc.2)
+rownames(trait)=rownames(pc.2)
+dist.trait=dist(trait, method="euclidean")
+sq.dist=as.matrix(dist.trait)
+obs.mntd=mntd(cdm, sq.dist, abundance.weighted=F)
+ses.all=(obs.mntd-apply(null, MARGIN=1, mean))/apply(null, MARGIN=1, sd)
+p.vall.all=apply(cbind(obs.mntd, null), MARGIN=1, rank)[1,]/1000
+return(list(obs.mntd, ses.all, p.vall.all))
+}
+
+obs.mntd.pc=obs.pc.mntd.funk(q5.cdm, q5.pc.mntd.null)
+
+q5.pc.ses.output=matrix(data=NA, ncol=4, nrow=16)
+colnames(q5.pc.ses.output)=c("mntd.obs", "mntd.obs.rank", "mntd.obs.z", "mntd.obs.p")
+rownames(q5.pc.ses.output)=c(250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000)
+
+q5.pc.ses.output[,3]=obs.mntd.pc[[2]]
+q5.pc.ses.output[,4]=obs.mntd.pc[[3]]
+q5.pc.ses.output[,1]=obs.mntd.pc[[1]]
+q5.pc.ses.output[,2]=obs.mntd.pc[[3]]*1000
+
+write.csv(q5.pc.ses.output, file="q5.ses.pc.mntd.output.csv")
+
