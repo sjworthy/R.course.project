@@ -121,3 +121,15 @@ lines(colMeans(q5.tdm), type="b", lty=5, col="green")
 axis(1, at=1:6, labels=c("log.height", "log.la", "log.sla", "log.wood", "log.n", "log.p"), las=2)
 
 legend("bottomleft", legend=c("Q1", "Q2", "Q3", "Q4", "Q5"), col=c("black", "blue", "gray", "orange", "green"), lty=1:5)
+
+#plot of ses.FRic values
+plot(rownames(q1.ses.FRic), q1.ses.FRic[,3], type="b", lty=1, xlab="Elevation(m)", ylab="ses.FRic", col="black", ylim=c(-2,2))
+lines(rownames(q1.ses.FRic), q2.ses.FRic[,3], type="b", lty=2, col="blue")
+lines(rownames(q1.ses.FRic), q3.ses.FRic[,3], type="b", lty=3, col="gray")
+lines(rownames(q1.ses.FRic), q4.ses.FRic[,3], type="b", lty=4, col="orange")
+lines(rownames(q1.ses.FRic), q5.ses.FRic[,3], type="b", lty=5, col="green")
+
+legend("bottomright", legend=c("Q1", "Q2", "Q3", "Q4", "Q5"), col=c("black", "blue", "gray", "orange", "green"), lty=1:5)
+
+
+
