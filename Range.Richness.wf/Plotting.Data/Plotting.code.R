@@ -101,6 +101,23 @@ lines(rownames(q5.n), q5.n[,3], type="b", lty=5, col="green")
 
 legend("topright", legend=c("Q1", "Q2", "Q3", "Q4", "Q5"), col=c("blue", "black", "gray", "orange", "green"), lty=1:5)
 
+#plot Fric for each quantile
+plot(rownames(q2.FRic), q1.FRic[,1], type="b", lty=1, xlab="Elevation(m)", ylab="FRic", col="blue", ylim=c(0,20))
+lines(rownames(q2.FRic), q2.FRic[,1], type="b", lty=2, col="black")
+lines(rownames(q2.FRic), q3.FRic[,1], type="b", lty=3, col="gray")
+lines(rownames(q2.FRic), q4.FRic[,1], type="b", lty=4, col="orange")
+lines(rownames(q2.FRic), q5.FRic[,1], type="b", lty=5, col="green")
+
+legend("topright", legend=c("Q1", "Q2", "Q3", "Q4", "Q5"), col=c("blue", "black", "gray", "orange", "green"), lty=1:5)
 
 
+#plot trait means for each quantile
+plot(colMeans(q1.tdm), type="b", lty=1, ylab="Mean of each trait", col="black", ylim=c(-.55, .55), xaxt="n")
+lines(colMeans(q2.tdm), type="b", lty=2, col="blue")
+lines(colMeans(q3.tdm), type="b", lty=3, col="gray")
+lines(colMeans(q4.tdm), type="b", lty=4, col="orange")
+lines(colMeans(q5.tdm), type="b", lty=5, col="green")
 
+axis(1, at=1:6, labels=c("log.height", "log.la", "log.sla", "log.wood", "log.n", "log.p"), las=2)
+
+legend("bottomleft", legend=c("Q1", "Q2", "Q3", "Q4", "Q5"), col=c("black", "blue", "gray", "orange", "green"), lty=1:5)
